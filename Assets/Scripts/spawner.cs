@@ -5,7 +5,6 @@ using UnityEngine;
 public class spawner : MonoBehaviour
 {
     public player characterScript;
-    public GameObject obstacle1;
     public List<GameObject> obstacles;
     public float time;
     public float distance;
@@ -20,7 +19,7 @@ public class spawner : MonoBehaviour
         while (!characterScript.isDead)
         {
          
-            Instantiate(obstacle1, new Vector3(distance, -3.9f, 0), Quaternion.identity);
+            Instantiate(obstacles[Random.Range(0,2)], new Vector3(distance, -3.9f, 0), Quaternion.identity);
             yield return new WaitForSeconds(time);
         }
        

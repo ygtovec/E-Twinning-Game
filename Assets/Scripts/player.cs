@@ -8,6 +8,7 @@ public class player : MonoBehaviour
     public float velocity = 1f;
     public Rigidbody2D rb2D;
     public int jump = 2;
+    public scoreManager sayi;
 
     void Update()
     {
@@ -24,7 +25,7 @@ public class player : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D collider)
     {
-        if(collider.gameObject.tag == "Ground")
+        if (collider.gameObject.tag == "Ground")
         {
             jump = 2;
         }
@@ -34,4 +35,14 @@ public class player : MonoBehaviour
            
         }
     }
-}
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if(other.name == "ScoreArea" && !isDead)
+        {
+            sayi.UpdateScore();
+        }
+    }
+
+ }
+
