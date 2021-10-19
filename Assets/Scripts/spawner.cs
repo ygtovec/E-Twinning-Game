@@ -43,7 +43,7 @@ public class spawner : MonoBehaviour
             yield return new WaitForSeconds(Random.Range(2,8));
 
             //Instantiate(obstacles[Random.Range(0, 3)], new Vector3(distance, -3.9f, 0), Quaternion.identity);
-            Instantiate(obstacles[2], new Vector3(distance, -3.9f, 0), Quaternion.identity);
+            Instantiate(obstacles[Random.Range(0,2)], new Vector3(distance, -3.9f, 0), Quaternion.identity);
         }
        
     }
