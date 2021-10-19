@@ -11,7 +11,12 @@ public class player : MonoBehaviour
     public Rigidbody2D rb2D;
     public int jump = 2;
     public scoreManager sayi;
+   
 
+    void Start()
+    {
+        Time.timeScale = 1;
+    }
     void Update()
     {
         if (jump >= 1)
@@ -45,6 +50,20 @@ public class player : MonoBehaviour
         {
             sayi.UpdateScore();
             
+        }
+        if (other.name == "ScoreArea2" && !isDead)
+        {
+            sayi.UpdateScore2();
+           
+
+        }
+        if (other.name == "ScoreArea5" && !isDead)
+        {
+            sayi.UpdateScore5();
+            cuSpawner.noBoss = true;
+            cuSpawner.ResumeSpawn();
+
+
         }
     }
 
