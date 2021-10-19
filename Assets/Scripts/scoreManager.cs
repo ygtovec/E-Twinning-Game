@@ -14,21 +14,10 @@ public class scoreManager : MonoBehaviour
         score = 0;
         scoreText.text = score.ToString();
     }
-    public void UpdateScore()
+    public void UpdateScore(int temp)
     {
-        score++;
+        score+= temp;
         bossCounter++;
-        scoreText.text = score.ToString();
-    }
-    public void UpdateScore2()
-    {
-        score+= 2;
-        bossCounter++;
-        scoreText.text = score.ToString();
-    }
-    public void UpdateScore5()
-    {
-        score += 5;
         scoreText.text = score.ToString();
     }
 }

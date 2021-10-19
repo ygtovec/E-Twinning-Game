@@ -48,22 +48,19 @@ public class player : MonoBehaviour
     {
         if(other.name == "ScoreArea" && !isDead)
         {
-            sayi.UpdateScore();
+            sayi.UpdateScore(1);
             
         }
-        if (other.name == "ScoreArea2" && !isDead)
+        else if (other.name == "ScoreArea2" && !isDead || other.name == "EnemyDrone" && !isDead)
         {
-            sayi.UpdateScore2();
-           
-
+            sayi.UpdateScore(2);
         }
-        if (other.name == "ScoreArea5" && !isDead)
+
+        else if (other.name == "ScoreArea5" && !isDead)
         {
-            sayi.UpdateScore5();
+            sayi.UpdateScore(5);
             cuSpawner.noBoss = true;
             cuSpawner.ResumeSpawn();
-
-
         }
     }
 
