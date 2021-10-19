@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class player : MonoBehaviour
 {
+    public spawner cuSpawner; 
+        
     public bool isDead;
     public float velocity = 1f;
     public Rigidbody2D rb2D;
@@ -23,6 +25,7 @@ public class player : MonoBehaviour
         }
        
     }
+
     void OnCollisionEnter2D(Collision2D collider)
     {
         if (collider.gameObject.tag == "Ground")
@@ -41,6 +44,7 @@ public class player : MonoBehaviour
         if(other.name == "ScoreArea" && !isDead)
         {
             sayi.UpdateScore();
+            
         }
     }
 

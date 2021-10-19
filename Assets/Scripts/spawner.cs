@@ -5,7 +5,7 @@ using UnityEngine;
 public class spawner : MonoBehaviour
 {
     #region Variables
-    public Transform spawnPoint;
+    public List<Transform> spawnPoints;
     public player characterScript;
     public List<GameObject> obstacles;
     public GameObject enemyDrone;
@@ -15,19 +15,19 @@ public class spawner : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(SpawnObject(time));
+        StartCoroutine(SpawnObject());
         StartCoroutine(DroneSpawner(5));
     }
 
-    public IEnumerator SpawnObject(float time)
+    public IEnumerator SpawnObject()
     {
 
         while (!characterScript.isDead)
         {
-         
-            Instantiate(obstacles[Random.Range(0,2)], new Vector3(distance, -3.9f, 0), Quaternion.identity);
+            yield return new WaitForSeconds(Random.Range(2,8));
 
-            yield return new WaitForSeconds(time);
+            //Instantiate(obstacles[Random.Range(0, 3)], new Vector3(distance, -3.9f, 0), Quaternion.identity);
+            Instantiate(obstacles[2], new Vector3(distance, -3.9f, 0), Quaternion.identity);
         }
        
     }
@@ -37,9 +37,12 @@ public class spawner : MonoBehaviour
     {
         while (!characterScript.isDead)
         {
-            Instantiate(enemyDrone, new Vector3(spawnPoint.position.x, spawnPoint.position.y, 0), Quaternion.identity);
+        yield return new WaitForSeconds(15);
 
-            yield return new WaitForSeconds(time);
+        Transform spawnPoint = spawnPoints[Random.Range(0, 2)];
+        
+        Instantiate(enemyDrone, new Vector3(spawnPoint.position.x, spawnPoint.position.y, 0), Quaternion.identity);
+        
         }
     }
 }
